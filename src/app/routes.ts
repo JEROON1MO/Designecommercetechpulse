@@ -9,19 +9,24 @@ import { OrderConfirmation } from "./pages/OrderConfirmation";
 import { WishlistPage } from "./pages/WishlistPage";
 import { NotFound } from "./pages/NotFound";
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      Component: Layout,
+      children: [
+        { index: true, Component: HomePage },
+        { path: "categoria/:slug", Component: CategoryPage },
+        { path: "produto/:id", Component: ProductPage },
+        { path: "carrinho", Component: CartPage },
+        { path: "checkout", Component: CheckoutPage },
+        { path: "confirmacao", Component: OrderConfirmation },
+        { path: "favoritos", Component: WishlistPage },
+        { path: "*", Component: NotFound },
+      ],
+    },
+  ],
   {
-    path: "/",
-    Component: Layout,
-    children: [
-      { index: true, Component: HomePage },
-      { path: "categoria/:slug", Component: CategoryPage },
-      { path: "produto/:id", Component: ProductPage },
-      { path: "carrinho", Component: CartPage },
-      { path: "checkout", Component: CheckoutPage },
-      { path: "confirmacao", Component: OrderConfirmation },
-      { path: "favoritos", Component: WishlistPage },
-      { path: "*", Component: NotFound },
-    ],
-  },
-]);
+    basename: "/Designecommercetechpulse",
+  }
+);
